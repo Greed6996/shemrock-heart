@@ -308,22 +308,22 @@
 .hero-section {
   position: relative;
   overflow: hidden;
-  padding-top: clamp(40px, 6vw, 70px);
-  padding-bottom: clamp(60px, 8vw, 100px);
+  padding-top: clamp(20px, 3.5vh, 50px);
+  padding-bottom: clamp(30px, 4.5vh, 70px);
   background: radial-gradient(circle at 10% 20%, #FFF8EA 0%, #FFF0F4 50%, #F0F6FF 100%);
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
+  gap: 32px;
   align-items: center;
 }
 
 @media (min-width: 992px) {
   .hero-grid {
     grid-template-columns: 1.15fr 1fr;
-    gap: 60px;
+    gap: clamp(24px, 4vw, 54px);
   }
 }
 
@@ -333,8 +333,9 @@
 }
 
 .hero-title {
-  margin-bottom: 20px;
+  margin-bottom: clamp(10px, 1.8vh, 18px);
   color: var(--color-primary-dark);
+  font-size: clamp(2rem, 3.2vw + 0.5rem, 3.5rem);
 }
 
 .hero-title .highlight-gold {
@@ -344,25 +345,25 @@
 }
 
 .hero-subtitle {
-  font-size: 1.2rem;
-  line-height: 1.75;
+  font-size: clamp(1rem, 1vw + 0.4rem, 1.18rem);
+  line-height: clamp(1.55, 1.65, 1.75);
   color: #475569;
-  margin-bottom: 32px;
+  margin-bottom: clamp(18px, 2.5vh, 30px);
   max-width: 580px;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 36px;
+  gap: clamp(10px, 1.5vw, 16px);
+  margin-bottom: clamp(20px, 2.8vh, 34px);
 }
 
 .hero-proof-bar {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding-top: 24px;
+  padding-top: clamp(14px, 2vh, 22px);
   border-top: 1px dashed rgba(18, 67, 136, 0.15);
 }
 
@@ -371,8 +372,8 @@
 }
 
 .avatar-img {
-  width: 44px;
-  height: 44px;
+  width: clamp(38px, 3vw, 44px);
+  height: clamp(38px, 3vw, 44px);
   border-radius: 50%;
   border: 3px solid #FFFFFF;
   margin-left: -12px;
@@ -420,7 +421,7 @@
 
 .hero-image-card img {
   width: 100%;
-  height: 420px;
+  height: clamp(260px, 38vh, 420px);
   object-fit: cover;
   transition: transform 0.6s ease;
 }
@@ -462,6 +463,105 @@
   align-items: center;
   justify-content: center;
   font-size: 1.4rem;
+}
+
+/* --------------------------------------------------------------------------
+   Laptop & Short Screen Height Optimization
+   (Fixes hero section cut-off on laptops like 1366x768, 1280x800, 1440x900)
+   -------------------------------------------------------------------------- */
+@media (min-width: 992px) and (max-height: 850px) {
+  .hero-section {
+    padding-top: clamp(14px, 2.5vh, 28px);
+    padding-bottom: clamp(20px, 3.5vh, 36px);
+  }
+
+  .hero-title {
+    font-size: clamp(1.95rem, 2.4vw + 0.4rem, 2.5rem);
+    margin-bottom: 10px;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.55;
+    margin-bottom: 18px;
+  }
+
+  .hero-actions {
+    margin-bottom: 18px;
+    gap: 12px;
+  }
+
+  .hero-actions .btn {
+    padding: 11px 24px;
+    font-size: 0.98rem;
+  }
+
+  .hero-proof-bar {
+    padding-top: 12px;
+  }
+
+  .hero-image-card img {
+    height: clamp(240px, 34vh, 320px);
+  }
+
+  .floating-badge {
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .floating-badge.badge-top-left {
+    top: -10px;
+    left: -10px;
+  }
+
+  .floating-badge.badge-bottom-right {
+    bottom: -10px;
+    right: -10px;
+  }
+
+  .badge-icon-box {
+    width: 36px;
+    height: 36px;
+    font-size: 1.15rem;
+  }
+
+  .badge-info h4 {
+    font-size: 0.88rem;
+  }
+
+  .badge-info p {
+    font-size: 0.74rem;
+  }
+}
+
+@media (min-width: 992px) and (max-height: 720px) {
+  .hero-section {
+    padding-top: 10px;
+    padding-bottom: 18px;
+  }
+
+  .hero-title {
+    font-size: 1.85rem;
+    margin-bottom: 8px;
+  }
+
+  .hero-subtitle {
+    font-size: 0.92rem;
+    line-height: 1.48;
+    margin-bottom: 14px;
+  }
+
+  .hero-actions {
+    margin-bottom: 14px;
+  }
+
+  .hero-proof-bar {
+    padding-top: 10px;
+  }
+
+  .hero-image-card img {
+    height: clamp(210px, 30vh, 260px);
+  }
 }
 
 .badge-icon-box.gold {

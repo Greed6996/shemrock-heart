@@ -65,7 +65,7 @@
   /* Layout */
   --container-max: 1240px;
   --container-pad: 24px;
-  --nav-height: 84px;
+  --nav-height: clamp(68px, 7vh, 84px);
 }
 
 /* ==========================================================================
