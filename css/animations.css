@@ -1,0 +1,171 @@
+/* ==========================================================================
+   SHEMROCK HEART - DELIGHTFUL ANIMATIONS & MICRO-INTERACTIONS
+   ========================================================================== */
+
+/* 1. Floating Elements (Clouds, Badges, Stars) */
+@keyframes floatGentle {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1.5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes floatReverse {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(12px) rotate(-2deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.float-element {
+  animation: floatGentle 5s ease-in-out infinite;
+}
+
+.float-element-slow {
+  animation: floatGentle 7s ease-in-out infinite;
+}
+
+.float-element-reverse {
+  animation: floatReverse 6s ease-in-out infinite;
+}
+
+/* 2. Heart Pulse Animation */
+@keyframes heartPulse {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.18);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.12);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+.heart-beat {
+  animation: heartPulse 2.4s ease-in-out infinite;
+  display: inline-block;
+  transform-origin: center;
+}
+
+/* 3. Mascot Wiggle & Cheer */
+@keyframes mascotWiggle {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  20% {
+    transform: rotate(-12deg) scale(1.06);
+  }
+  40% {
+    transform: rotate(10deg) scale(1.06);
+  }
+  60% {
+    transform: rotate(-6deg) scale(1.03);
+  }
+  80% {
+    transform: rotate(4deg) scale(1.02);
+  }
+}
+
+.mascot-wiggle {
+  animation: mascotWiggle 3.5s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+/* 4. Glowing Badge Ping */
+@keyframes badgePing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 90, 121, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(255, 90, 121, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 90, 121, 0);
+  }
+}
+
+.ping-glow {
+  animation: badgePing 2s infinite;
+}
+
+/* 5. Shimmer Gradient Effect */
+@keyframes shimmerPass {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #124388 0%, #FF5A79 40%, #FFA800 60%, #124388 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerPass 6s linear infinite;
+}
+
+/* 6. Playful Bounce on Interactive Elements */
+@keyframes softBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.bounce-hover:hover {
+  animation: softBounce 0.6s ease-in-out infinite;
+}
+
+/* 7. Canvas Confetti (Overlay Layer) */
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* 8. Fade & Slide Transitions */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

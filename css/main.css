@@ -1,0 +1,354 @@
+/* ==========================================================================
+   SHEMROCK HEART - BASE DESIGN SYSTEM & TOKENS
+   ========================================================================== */
+
+:root {
+  /* Brand Palette */
+  --color-primary: #124388;          /* Shemrock Deep Royal Blue */
+  --color-primary-light: #2059ab;
+  --color-primary-dark: #0b2a57;
+  --color-primary-glow: rgba(18, 67, 136, 0.15);
+
+  --color-accent-gold: #FFA800;     /* Joyful Sunflower Gold */
+  --color-accent-gold-light: #FFC247;
+  --color-accent-gold-soft: #FFF7E6;
+
+  --color-accent-coral: #FF5A79;    /* Playful Heart Coral */
+  --color-accent-coral-soft: #FFEAEF;
+
+  --color-accent-mint: #10B981;     /* Fresh Sprouts Mint */
+  --color-accent-mint-soft: #E8F9F3;
+
+  --color-accent-sky: #38BDF8;      /* Open Sky Blue */
+  --color-accent-sky-soft: #EFF8FF;
+
+  --color-accent-purple: #8B5CF6;   /* Creative Wonder Purple */
+  --color-accent-purple-soft: #F3E8FF;
+
+  /* Neutral Spectrum */
+  --color-bg: #FCFDFE;
+  --color-surface: #FFFFFF;
+  --color-surface-soft: #F6F9FD;
+  --color-surface-glass: rgba(255, 255, 255, 0.9);
+  --color-text-main: #1E293B;       /* Deep slate for clear reading */
+  --color-text-muted: #64748B;
+  --color-text-light: #94A3B8;
+  --color-border: #E2E8F0;
+  --color-border-light: #F1F5F9;
+
+  /* Typography */
+  --font-heading: 'Fredoka', 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-subheading: 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  /* Border Radii */
+  --radius-xs: 8px;
+  --radius-sm: 14px;
+  --radius-md: 22px;
+  --radius-lg: 32px;
+  --radius-xl: 48px;
+  --radius-pill: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 4px 12px rgba(18, 67, 136, 0.05);
+  --shadow-md: 0 10px 30px rgba(18, 67, 136, 0.08);
+  --shadow-lg: 0 18px 45px rgba(18, 67, 136, 0.12);
+  --shadow-gold: 0 10px 28px rgba(255, 168, 0, 0.3);
+  --shadow-coral: 0 10px 28px rgba(255, 90, 121, 0.28);
+  --shadow-primary: 0 12px 32px rgba(18, 67, 136, 0.25);
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Layout */
+  --container-max: 1240px;
+  --container-pad: 24px;
+  --nav-height: 84px;
+}
+
+/* ==========================================================================
+   CSS RESET & CORE
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-main);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-primary-dark);
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 5vw + 0.8rem, 3.8rem);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 3.5vw + 0.5rem, 2.7rem);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw + 0.4rem, 1.75rem);
+}
+
+p {
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent-coral) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FF8C00 0%, #FFA800 50%, #FFC247 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   CONTAINER & LAYOUT
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+
+.section {
+  padding-top: clamp(60px, 8vw, 100px);
+  padding-bottom: clamp(60px, 8vw, 100px);
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 50px auto;
+}
+
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-accent-gold-soft);
+  color: #B45309;
+  border: 1px solid rgba(255, 168, 0, 0.35);
+  padding: 7px 20px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-subheading);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 14px rgba(255, 168, 0, 0.18);
+}
+
+.badge-tag.coral {
+  background: var(--color-accent-coral-soft);
+  color: var(--color-accent-coral);
+  border-color: rgba(255, 90, 121, 0.35);
+  box-shadow: 0 4px 14px rgba(255, 90, 121, 0.18);
+}
+
+.badge-tag.mint {
+  background: var(--color-accent-mint-soft);
+  color: #047857;
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.15);
+}
+
+.badge-tag.blue {
+  background: var(--color-accent-sky-soft);
+  color: var(--color-primary);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.15);
+}
+
+.section-header h2 {
+  margin-bottom: 16px;
+}
+
+.section-header p {
+  font-size: 1.15rem;
+}
+
+/* ==========================================================================
+   BUTTONS & CTAS
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 30px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-subheading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-accent-coral) 0%, #FF2A5B 100%);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-coral);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 32px rgba(255, 42, 91, 0.45);
+}
+
+.btn-secondary {
+  background: #FFFFFF;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  background: var(--color-accent-sky-soft);
+  color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--color-accent-gold) 0%, #FF9100 100%);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-gold:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 32px rgba(255, 145, 0, 0.45);
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  color: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+}
+
+.btn-whatsapp:hover {
+  background: #1FB855;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(37, 211, 102, 0.45);
+}
+
+.btn-sm {
+  padding: 8px 18px;
+  font-size: 0.9rem;
+}
+
+.btn-lg {
+  padding: 16px 36px;
+  font-size: 1.15rem;
+}
+
+/* ==========================================================================
+   DECORATIVE SHAPES & WAVES
+   ========================================================================== */
+
+.wave-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  display: block;
+}
+
+.wave-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 55px;
+}
+
+@media (min-width: 768px) {
+  .wave-divider svg {
+    height: 85px;
+  }
+}
+
+.bg-soft {
+  background-color: var(--color-surface-soft);
+}
+
+.bg-white {
+  background-color: var(--color-surface);
+}
+
+.bg-primary-tint {
+  background: linear-gradient(180deg, #F0F6FF 0%, #FAF5FF 100%);
+}
+
+.bg-rainbow-soft {
+  background: linear-gradient(135deg, #FFF9ED 0%, #FFF2F5 50%, #EEF7FF 100%);
+}
